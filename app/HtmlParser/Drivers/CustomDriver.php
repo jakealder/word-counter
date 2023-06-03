@@ -1,6 +1,6 @@
 <?php
 
-namespace App\HtmlParser\drivers;
+namespace App\HtmlParser\Drivers;
 
 use Illuminate\Support\Facades\Http;
 use PHPHtmlParser\Dom;

@@ -2,8 +2,8 @@
 
 namespace App\HtmlParser;
 
-use App\HtmlParser\drivers\CustomDriver;
-use App\HtmlParser\drivers\PaquettgDriver;
+use App\HtmlParser\Drivers\CustomDriver;
+use App\HtmlParser\Drivers\PaquettgDriver;
 use Illuminate\Support\Manager;
 
 class HtmlParserManager extends Manager {
