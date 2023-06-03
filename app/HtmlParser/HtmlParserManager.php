@@ -28,15 +28,6 @@ class HtmlParserManager extends Manager {
     }
 
     /**
-     * Create a Paquettg driver instance.
-     *
-     * @return PaquettgDriver;
-     */
-    public function createPaquettgDriver(): PaquettgDriver {
-        return new PaquettgDriver();
-    }
-
-    /**
      * Get the default driver name.
      *
      * @return string
