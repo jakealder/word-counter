@@ -6,19 +6,44 @@ use App\HtmlParser\Facades\HtmlParser;
 use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 
+/**
+ * Class WordCounterForm
+ *
+ * This class represents a Livewire component responsible for handling word count from a list of URLs.
+ *
+ * @package App\Http\Livewire
+ */
 class WordCounterForm extends Component
 {
-
+    /**
+     * @var string $urls The string of URLs.
+     */
     public string $urls;
+
+    /**
+     * @var array $urlsArray The array of URLs.
+     */
     public array $urlsArray = [];
+
+    /**
+     * @var array $wordCounts The word count for each URL.
+     */
     public array $wordCounts = [];
 
+    /**
+     * Event triggered when URLs are updated.
+     *
+     * @param string $urls The new URLs.
+     * @return void
+     */
     public function updatedUrls($urls): void {
         $this->validateUrls();
     }
 
     /**
-     * @return bool
+     * Validates the list of URLs provided by the user.
+     *
+     * @return bool Returns true if URLs are valid, otherwise false.
      */
     public function validateUrls(): bool {
         $urls = preg_split("/\r\n|\n|\r/", $this->urls);
@@ -42,6 +67,11 @@ class WordCounterForm extends Component
         return true;
     }
 
+    /**
+     * Retrieves the word count from each URL.
+     *
+     * @return void
+     */
     public function getWordCount(): void {
         $this->validateUrls();
         $this->reset('wordCounts');
@@ -55,9 +85,10 @@ class WordCounterForm extends Component
         }
     }
 
-
     /**
-     * @return mixed
+     * Renders the Livewire component.
+     *
+     * @return mixed The rendered component.
      */
     public function render(): mixed {
         return view('livewire.word-counter-form')->layout('components.layout.app');
