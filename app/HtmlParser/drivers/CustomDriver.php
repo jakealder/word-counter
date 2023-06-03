@@ -9,13 +9,13 @@ class CustomDriver
 {
     public $content;
 
-    public function getContent($url) {
+    public function getContent($url): static {
         $this->content = file_get_contents($url);
         return $this;
     }
 
 
-    public function formatContent(): CustomDriver {
+    public function formatContent(): static {
         $this->content = preg_replace('@<script[^>]*?>.*?</script>@si', '', $this->content);
         $this->content = preg_replace('@<style[^>]*?>.*?</style>@si', '', $this->content);
         $this->content = strip_tags($this->content);
@@ -24,7 +24,7 @@ class CustomDriver
         return $this;
     }
 
-    public function wordCount() {
+    public function wordCount(): array|int {
         return str_word_count($this->content, 0);
     }
 
